@@ -1,0 +1,82 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="main">
+  <div class="header">
+    <h1 class="head-text">Funds</h1>
+  </div>
+  
+  <div class="total_data">
+    
+    {% for x in funds %}
+        <p>Accumulated Funds: &#8377; {{ x.accumulated_amount }}</p>
+        <p>Remaining Fund: &#8377; {{ x.remaining_fund }}</p>
+    {% endfor %}
+
+  </div>
+  
+  <div class="funds-nav">
+    <a class="fund-buttons" href="{% url 'fund:contributor_transactions' %}">Contributor Transactions</a>
+    <a class="fund-buttons" href="{% url 'fund:contributor_list' %}">Contributor List</a>
+    <a class="fund-buttons" href="{% url 'fund:create_contributor' %}">Create New Contributor</a>
+  </div>
+  
+  <div class="card_container">
+    <div class="card" style="margin-bottom: 40px; border: 2px solid #ffffff; background-color: #a64dff; box-shadow: 5px 10px 10px #6b00b3;">
+
+      <div class="card-body" style="color: #ffffff">
+
+        <h4 class="card-title">Here are all the Loans</h4>
+        <table class="table table-striped">
+          <thead>
+          <tr style="color:#ffffff">
+
+              <th>Name</th>
+              <th>Amount Contributed</th>
+              <th>Last Contribution Date:</th>
+              <th>More Actions</th>
+
+          </tr>
+        </thead>
+        <tbody>
+      {% for contributor in contributors %}
+          <tr>
+              <td><strong>{{ contributor.user.username }}</strong></td>
+              <td>&#8377; {{ contributor.total_contributed_amount }}</td>
+              <td>{{ contributor.updated_date }}</td>
+              <td>
+              {% if request.user.is_superuser %}
+                  <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <img src="/static/images/options.png" class="options-icon" alt="Options">
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url 'fund:make_contribution' contributor.id %}">Make Contribution</a></li>
+                      <li><a class="dropdown-item" href="{% url 'fund:contribution_history' contributor.id %}">Check History</a></li>
+                      <li><a class="dropdown-item" href="{% url 'fund:delete_contributor' contributor.id %}">Delete Contributor</a></li>
+                    </ul>
+                  </div>
+                  {% comment %} <a class="btn btn-success" href="{% url 'fund:make_contribution' contributor.id %}">Make Contribution</a>
+                  <a class="btn btn-primary" href="{% url 'fund:contribution_history' contributor.id %}">Check History</a>
+                  <a class="btn btn-danger" href="{% url 'fund:delete_contributor' contributor.id %}">Delete Contributor</a> {% endcomment %}
+
+              {% endif %}
+              </td>
+
+          </tr>
+      {% empty %}
+          <tr>
+              No contributors found.
+              <a href="{% url 'fund:create_contributor' %}"><button>Add Contributor</button></a>
+          </tr>
+      {% endfor %}
+  </table>
+           
+        </div>
+      </div>
+    </div>
+
+</div>
+
+{% endblock %}

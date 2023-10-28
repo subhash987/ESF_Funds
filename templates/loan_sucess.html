@@ -1,0 +1,8 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <div class="success-page">
+    <h1>Loan was sucessfully created for {{obj}}</h1>
+    <a href="{% url 'loans' %}"><button type="submit">OK</button></a>
+  </div>
+{% endblock content %}

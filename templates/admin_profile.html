@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+{% block content %}
+
+{% load static %}
+
+<div class="main">
+    <div class="header">
+        <h1 class="head-text">Profile</h1>
+    </div>
+
+    <a class="create-button" href="{% url 'profile' %}">View All Profiles</a>
+
+    <div class="profiles">
+        {% for x in profile  %}
+            <div class="profile">
+                <div class="profle-header" style="padding: 20px">
+                    <center><img src="/static/images/Profile-Icon.svg" alt="Profile Icon"/> 
+                    <h3>{{ x.first_name }} {{ x.last_name }}</h3></center>
+                </div>
+                <div class="profle-body" style="padding: 20px">
+                    <p>Username: {{ x.user_id }}</p>
+                    <p>Full Name: {{ x.first_name }} {{ x.last_name }}</p>
+                    <p>Email: {{ x.email }}</p>
+                    <p>Date of Birth: {{ x.dob }}</p>
+                    <p>Created on: {{ x.created }}</p>
+                    <p>Last Updated: {{ x.updated }}</p>
+                
+                    <br>
+                    <a class="btn btn-primary" href="{% url 'update-profile' pk=x.pk %}">Edit</a>
+                </div>
+            </div>
+                
+                {% empty %}
+                <h4>You haven't created your profile yet.</h4>
+        
+        {% endfor %}
+    </div>
+
+</div>
+
+
+{% endblock content %}

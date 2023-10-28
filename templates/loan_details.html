@@ -1,0 +1,73 @@
+{% extends 'main.html' %}
+{% block content %}
+
+
+<div class="main">
+
+    <div class="header">
+        <h1 class="head-text">You are viewing Loan Details for : {{loan.user}}</h1>
+    </div>
+
+
+  <div class="profiles">
+          {% if user.is_superuser %}
+          <div class="profile">
+            <div class="profile-header" style="color: #ffffff">
+          {% comment %} <h1>Loan Details for {{ user.username }}</h1> {% endcomment %}
+            <h4 class="card-title">Here are all the details</h4>
+            </div>
+            <div class="profle-body" style="padding: 20px;">
+                {% comment %} <th>Loan ID</th> {% endcomment %}
+                <p>Name: {{loan.user}}</p>
+                <p>Amount: {{ loan.amount }}</p>
+                <p>Interest: {{ loan.interest_rate }}</p>
+                <p>Term (in months): {{ loan.term }}</p>
+                <p>Amount Paid for the current loan: {{ loan.balance }}</p>
+                <p>Remaining Balance: {{ loan.remaining_balance }}</p>
+                <p>created_loan: {{ loan.created_loan  | date:"d-M-Y" }}</p>
+                <p>Status: {{ loan.status }}</p>
+          
+            {% comment %} {% for x in loan %} {% endcomment %}
+            
+                {% comment %} 
+                    {{x.id}}
+                 {% endcomment %}
+              
+                <a href="{% url 'repay_loan' loan_id=loan.id %}" class="btn btn-success">Loan repayment</a>
+            
+              
+                <a href="{% url 'update-loan' pk=loan.pk %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'delete-loan' pk=loan.pk %}" class="btn btn-danger">Delete</a>
+            </div>
+          </div>
+                
+            
+
+          {% else %}
+          <div class="profile">
+            <div class="profile-header" style="color: #ffffff">
+              <h4 class="card-title">Here are all the details</h4>
+            </div>
+            
+          <div class="profle-body" style="padding: 20px;">
+            {% comment %} <th>Loan ID</th> {% endcomment %}
+            <p>Name: {{loan.user}}</p>
+            <p>Amount: {{ loan.amount }}</p>
+            <p>Interest: {{ loan.interest_rate }}</p>
+            <p>Term (in months): {{ loan.term }}</p>
+            <p>Amount Paid for the current loan: {{ loan.balance }}</p>
+            <p>Remaining Balance: {{ loan.remaining_balance }}</p>
+            <p>created_loan: {{ loan.created_loan  | date:"d-M-Y" }}</p>
+            <p>Status: {{ loan.status }}</p>
+          </div>
+        
+        </div>
+          {% endif %}
+           
+        
+    </div>
+
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,193 @@
+{% extends 'main.html' %}
+{% block content %}
+
+{% load static %}
+
+
+<div class="main">
+
+    <div class="header">
+        <h1 class="head-text">Loans</h1>
+    </div>
+
+    <div class="total_data">
+      <p>Remaining Fund: &#8377; {{ remaining_amount }}</p>
+      <p>Total Loans Given: &#8377; {{ total_loan_amount }}</p>
+    </div>
+
+    <div class="headline">
+
+      {% if user.is_superuser %}
+
+          <span class="button_span">
+            <a class="create-button" href="{% url 'create-loan' %}">Create Loan</a>
+          </span>
+
+      {% endif %}
+    
+      <div class="filter">
+        <form method="GET">
+          <div class="filter-group">
+            <img src="/static/images/user-icon.png" alt="User Icon" width="50">
+            <span>
+              <label for="user_filter">Filter by User:</label>
+              <select id="user_filter" name="user_filter">
+                <option value="">All Users</option>
+                {% for u in users %}
+                <option value="{{u.username}}" {% if user_filter == u.username%}selected{% endif %}}>{{u.username}}</option>
+                {% endfor %}
+              </select>
+            </span>
+          </div>
+          <div class="filter-group">
+            <img src="/static/images/transaction-icon.png" alt="Transaction Icon" width="50">
+            <span>
+              <label for="status">Status:</label>
+              <select name="status_filter">
+                <option value="">All Types</option>
+                {% for t in status %}
+                <option value="{{t}}" {% if status_filter == t %}selected{% endif %}}>{{t|title}}</option>
+                {% endfor %}
+              </select>
+            </span>
+          </div>
+          <button type="submit" class="btn btn-success" style="margin-left: 10px; padding: 6px 8px">Filter</button>
+        </form>
+      </div>
+    
+    </div>
+
+
+  <div class="card_container">
+      <div class="card" style="margin-bottom: 40px; border: 2px solid #ffffff; background-color: #a64dff; box-shadow: 5px 10px 10px #6b00b3;">
+
+        <div class="card-body" style="color: #ffffff">
+          {% if user.is_superuser %}
+          
+          <h4 class="card-title">Here are all the Loans</h4>
+          <table class="table table-striped">
+            <thead>
+            <tr style="color:#ffffff">
+
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Balance</th>
+                <th>Status</th>
+                <th>More Actions</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for x in loan %}
+            <tr>
+
+              <td style=" color: #ffffff">
+                {{x.user}}
+              </td>
+              <td style=" color: #ffffff">
+                {{ x.amount }}
+              </td >
+              <td style=" color: #ffffff">
+                {{ x.remaining_balance}}
+              </td>
+              <td style=" color: #ffffff">
+                {{ x.status }}
+              </td>
+              <td class="update-td">
+                <div class="dropdown">
+                  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="/static/images/options.png" class="options-icon" alt="Options">
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'loan-details' pk=x.pk %}">View</a></li>
+                    <li><a class="dropdown-item" href="{% url 'update-loan' pk=x.pk %}">Update</a></li>
+                    <li><a class="dropdown-item" href="{% url 'delete-loan' pk=x.pk %}">Delete</a></li>
+                  </ul>
+                </div>
+
+              </td>
+            
+              {% empty %}
+              <td colspan="5" style="color: white; text-align: center;">
+                <h4>No Loans to show!<h4>
+              </td>
+            </tr>
+            {% endfor %}
+          
+        </tbody>
+      </table>
+
+          {% else %}
+
+          <h1>Loan Details for {{ user.username }}</h1>
+          <h4 class="card-title">Here are all your Loans</h4>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Loan ID</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Loan starting date</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for x in loan %}
+            <tr>
+                <td style="color: #ffffff">
+                    {{ x.id }}
+                  </td>
+              <td style=" color: #ffffff">
+                {{ x.user }}
+              </td>
+              
+              <td style=" color: #ffffff">
+                {{ x.amount }}
+              </td >
+              <td style=" color: #ffffff">
+                {{ x.created_loan | date:"d-M-Y" }}
+              </td>
+              <td>
+                <a href="{% url 'loan-details' pk=x.pk %}" class="update-link">
+                  View
+                  <img src="/static/images/view-icon.jpg" alt="Profile Icon" class="loan-update">
+                </a>
+              </td>
+
+              {% empty %}
+              <td colspan="4" style="color: white; text-align: center;">
+                <h4>You don't have any active loans!<h4>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          </table>
+
+          {% endif %}
+           
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+<script>
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+  }
+</script>
+
+
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="edit-main">
+    <form class="edit-form" method="POST" action="">
+        <h1>You are Editing Loan for: {{ loan.user }}</h1>
+        {% csrf_token %}
+        <label for="user">User:</label>
+        {{ form.user }}
+        <label for="amount">Amount:</label>
+        {{ form.amount }}
+        <label for="interest_rate">Interest Rate:</label>
+        {{ form.interest_rate }}
+        <label for="term">Term (in Months):</label>
+        {{ form.term }}
+        <label for="remaining_balance">Remaining Balance:</label>
+        {% if disabled %}
+        <input type="remaining_balance" id="remaining_balance" name="remaining_balance" value="{{ loan.remaining_balance }}" disabled> 
+        {% else %}
+        <input type="remaining_balance" id="remaining_balance" name="remaining_balance" value="{{ loan.remaining_balance }}">
+        {% endif %}
+        <label for="balance">Amount Paid for the current loan</label>
+        {% if disabled %}
+        <input type="balance" id="balance" name="balance" value="{{ loan.balance }}" disabled> 
+        {% else %}
+        <input type="balance" id="balance" name="balance" value="{{ loan.balance }}">
+        {% endif %}
+        <label for="{{loan.status.id_for_label}}">Current Status:</label>
+        {% comment %} {{loan.status}} {% endcomment %}
+        {{form.status}}
+        
+        <input type="submit" value="Update Loan" {% if disabled %} disabled {% endif %}>
+        {% if disabled %}
+            <p>This loan is already paid and cannot be edited.</p>
+        {% endif %}
+    </form>
+</div>
+
+{% endblock content %}

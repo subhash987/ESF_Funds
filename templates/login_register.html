@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+{% block content %}
+
+{% if page == 'login' %}
+<div class="div_container">
+    <img class="div_container_image" src="/static/images/Money.jpg"/>
+    <div class="login_register">
+        <h2 class="head-text">Login</h2>
+        <div class="login_register_content">
+            <form class="login_register_form" method="POST" action="">
+                {% csrf_token %}
+
+                <label for = "username">Username</label>
+                <input type = "username" name="username" placeholder="Enter Email Address">
+                <label for = "password">Password</label>
+                <input type="password" name="password" placeholder="Enter Password">
+                <input type="Submit" value="Login">
+            
+            </form>
+            <p class="text">Haven't signed up yet?</p>
+            <a href="{% url 'registerpage' %}"><button class="buttons">Register</button></a>
+        </div>
+    </div>
+
+</div>
+
+{% else %}
+
+<div class="div_container">
+    <img class="div_container_image" src="/static/images/Money.jpg"/>
+    <div class="login_register">
+        <h2 class="head-text">Register</h2>
+        <div class="login_register_content">
+            <form class="login_register_form" method = "POST" action="">
+                {% csrf_token %}
+
+                {{ form }}             
+                <input type="Submit" value="Register">
+
+            </form>
+
+            <p class="text">Already signed up?</p>
+            <a href="{% url 'loginpage' %}"><button class="buttons">Login</button></a>
+        </div>
+    </div>
+
+</div>
+
+{% endif %}
+
+{% endblock content %}

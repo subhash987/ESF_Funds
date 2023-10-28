@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="edit-main">
+
+  <div class="header">
+    <h1 class="head-text">Repay Loan</h1>
+  </div>
+  
+  {% comment %} <form class="edit-form" method="POST" action="">
+    <h3>You are Making Loan Repayment for: {{ loan.user }}</h3>
+    {% csrf_token %}
+    <label for="user">User:</label>
+    <input type="text" id="user" name="user" value="{{ loan.user }}" disabled>
+    <label for="amount">Loan Amount:</label>
+    <input type="text" id="amount" name="amount" value="{{ loan.amount }}" disabled>
+    <label for="remaining_balance">Remaining Balance:</label>
+    <input type="text" id="remaining_balance" name="remaining_balance" value="{{ loan.remaining_balance }}" disabled>
+
+    {% if loan.status != 'paid' %}
+
+    <label for="payment_amount">Payment Amount:</label>
+    <input type="number" id="payment_amount" name="payment_amount" min="0" max="{{ loan.remaining_balance }}" required>
+    <label for="payment_mode">Payment Mode:</label>
+    <input type="text" id="payment_mode" name="payment_mode" value="Repayment" required>
+    <label for="payment_id">Payment ID:</label>
+    <input type="text" id="payment_id" name="payment_id" required>
+    <input type="submit" value="Make Payment">
+    {% else %}
+    <p>Loan has already been paid.</p>
+    {% endif %}
+  </form>{% endcomment %}
+
+  <div class="repay-loan">
+    <form method="POST">
+      {% csrf_token %}
+      {% for repayment in repayments %}
+        <div class="repay-list">
+          <input type="checkbox" name="repayments" value="{{ repayment.id }}">
+          <label>Make Repayment of Rs {{ repayment.payment_amount }}</label>
+          <label>For the Month of {{ repayment.month }}</label>
+        </div>
+      {% endfor %}
+      <button type="submit" class="btn btn-outline-success">Repay Selected</button>
+    </form>
+  </div>
+
+</div>
+
+
+{% endblock content %}

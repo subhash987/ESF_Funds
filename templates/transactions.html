@@ -1,0 +1,144 @@
+{% extends 'main.html' %}
+{% block content %}
+
+
+<div class="main">
+
+    <div class="header">
+        <h1 class="head-text">Transactions</h1>
+    </div>
+
+    <div class="filter" style="margin-bottom:30px">
+      <form method="GET">
+        <div class="filter-group">
+          <img src="/static/images/user-icon.png" alt="User Icon">
+          <span>
+            <label for="user_filter">Filter by User:</label>
+            <select id="user_filter" name="user_filter">
+              <option value="">All Users</option>
+              {% for u in users %}
+              <option value="{{u.username}}" {% if user_filter == u.username%}selected{% endif %}}>{{u.username}}</option>
+              {% endfor %}
+            </select>
+          </span>
+        </div>
+        <div class="filter-group">
+          <img src="/static/images/transaction-icon.png" alt="Transaction Icon" width="50">
+            <span>
+              <label for="transaction_type">Transaction Type:</label>
+              <select name="transaction_type_filter">
+                <option value="">All Types</option>
+                {% for t in transaction_types %}
+                <option value="{{t}}" {% if transaction_type_filter == t %}selected{% endif %}}>{{t|title}}</option>
+                {% endfor %}
+              </select>
+            </span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-left: 10px">Filter</button>
+      </form>
+    </div>
+
+  <div class="card_container">
+    <div class="card" style="margin-bottom: 40px; border: 2px solid #ffffff; background-color: #00ff99; box-shadow: 5px 10px 10px #008000;">
+
+        <div class="card-body">
+          {% if user.is_superuser %}
+          {% comment %} <h1>Loan Details for {{ user.username }}</h1> {% endcomment %}
+          <h4 class="card-title">Here are all the Transactions</h4>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Transaction type</th>
+                <th>Date</th>
+                <th>Payment Mode</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for x in transactions %}
+            <tr>
+              <td>
+                {{x.loan}}
+              </td>
+              <td>
+                {{ x.transaction_amount }}
+              </td>
+              <td>
+                {{ x.transaction_type }}
+              </td>
+              <td>
+                {{ x.transaction_time | date:"d-M-Y" }}
+              </td>
+              <td>
+                {{x.payment_mode}}
+              </td>
+              
+              {% empty %}
+              <td colspan="5" style="color: white; text-align: center;">
+                <h4>No Transactions to show!<h4>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          </table>
+
+          {% else %}
+
+          <h4 class="card-title">Here are all your Transactions</h4>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Transaction Type</th>
+                <th>Date</th>
+                <th>Payment Mode</th>
+                
+            </tr>
+          </thead>
+          <tbody>
+            {% for x in transaction %}
+            <tr>
+              <td>
+                {{x.loan}}
+              </td>
+              <td>
+                {{ x.transaction_amount }}
+              </td>
+             {% comment %} {% if user.is_superuser %} {% endcomment %}
+             {% if x.transaction_type == "repayment" %}
+             <td> repayment </td>
+                {% elif x.loan.user == request.user %}
+                 <td>credit</td>
+                
+                {% else %}
+                  <td>Credit</td>
+                
+              {% endif %}
+              <td>
+                {{ x.transaction_time | date:"d-M-Y" }}
+              </td>
+              <td>
+                {{x.payment_mode}}
+              </td>
+
+              {% empty %}
+              <td colspan="5" style="text-align: center;">
+                <h4>You don't have any transactions.<h4>
+              </td>
+            </tr>
+            
+
+            {% endfor %}
+          </tbody>
+          </table>
+          {% endif %}
+        </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+

@@ -1,0 +1,712 @@
+*{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+html, body{
+    height: 100%;
+    margin: 0;
+    background-color: #000000 !important;
+    color: #ffffff;
+}
+
+.messages ul{
+    margin: 10px 0px 0px 10px;
+    color: #ffffff;
+}
+
+
+/* style for login and register */
+
+.div_container{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+
+.div_container_image{
+    position: absolute;
+    width: 100%;
+    height: 98vh;
+    opacity: 0.6;
+}
+
+.login_register{
+    margin: 0px auto;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #ffffff;
+    border-radius: 10px;
+    background-color: #635985;
+    position: relative;
+    box-shadow: 5px 10px 18px #000000;
+    top: 80px;
+    z-index: 9;
+}
+
+.lr-head-text{
+    margin-bottom: 20px;
+    display: flex;
+    color: white;
+    height: 100%;
+    width: 100%;
+    /* font-family: 'Merriweather', serif; */
+    font-family: 'Alkatra', cursive;
+    height: 45px;
+    justify-content: center;
+    background-color: #393053;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.login_register_content{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login_register_form{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    border-radius: 10px;
+}
+.login_register_form label{
+    font-weight: 700;
+}
+.login_register_form input{
+    margin-bottom: 20px;
+    width: 100%;
+    border: none;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.login_register_form input[type=Submit]{
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.buttons{
+    padding: 7px 10px;
+    border-radius: 8px;
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.buttons:hover{
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #000000;
+}
+
+.text{
+    font-weight: 600;
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+
+
+/* style for home page */
+
+.home{
+    box-sizing: border-box;
+    background-color: black;
+    color: #ffffff;
+}
+
+.home_main{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: black;
+    color: whitesmoke;
+}
+
+.home_main_image{
+    width: 400px;
+    border-radius: 10px;
+}
+
+.welcome-text{
+    font-size: 25px;
+}
+
+.total_data{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 20px 10px 30px 10px;
+
+}
+
+.total_data p{
+    border: 2px solid #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: #40128B;
+}
+
+.total_data p:hover{
+    background-color: #6032AB;
+}
+
+
+.activity{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#000000;
+    padding-bottom: 20px;
+}
+
+.activity a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+
+.row{
+    background-color: #000000;
+    color: #ffffff;
+}
+
+
+/* loan and transactions style */
+
+
+.main{
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 20px;
+    background-color: #000000;
+    margin-bottom: 20px;
+}
+
+
+.button_span{
+    margin-bottom: 30px;
+}
+
+.create-button {
+    padding: 5px 10px;
+    font-size: 25px;
+    text-decoration: none;
+    border: 2px solid white;
+    background: transparent;
+    color: #ffffff;
+    width: fit-content;
+    border-radius: 5px;
+    background-image: linear-gradient(to bottom right, #000080, #0066ff, #000080);
+    margin-bottom: 20px;
+}
+
+
+.create-button:hover {
+    box-shadow: 5px 5px 15x #0000cc;
+    background-image: linear-gradient(to bottom right, #0066ff, #0066ff, #0066ff);
+}
+
+.headline{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: #176B87; */
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.headline .create-button{
+    margin: 0px;
+}
+
+.filter{
+    padding: 10px;
+    width: 500px;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 10px;
+}
+
+.filter form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: auto;
+}
+
+.filter-group{
+    display: flex;
+    align-items: center;
+}
+
+.filter-group img{
+    width: 35px;
+}
+
+.filter-group span{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-left: 10px;
+}
+
+
+.card_container{
+    height: 100%;
+}
+
+.repay-list{
+    color: #ffffff;
+}
+
+.repay-list *{
+    margin-left: 10px;
+}
+
+.update-link{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.loan-update{
+    width: 25px;
+}
+
+.options-icon{
+    width: 25px;
+}
+
+
+.collapsible {
+    background: transparent;
+    color: #000000;
+    cursor: pointer;
+    padding: 5px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  .active, .collapsible:hover {
+    background: transparent;
+  }
+  
+  .content {
+    background-color: #ffffff;
+    padding: 0px;
+    display: none;
+    overflow: hidden;
+    text-align: center;
+    /* background-color: #11d345; */
+  }
+
+
+
+/* profile style */
+
+.profiles{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+.profile{
+    border: 2px solid #ffffff;
+    margin: 20px;
+    width: 450px;
+    border-radius: 10px;
+    background-color: #1a292f
+}
+
+.profile-header{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-header img{
+    padding: 20px;
+    width: 150px;
+}
+
+.profile-body{
+    font-size: 20px;
+    padding: 20px;
+}
+
+
+/* Edit Forms */
+
+.create-main{
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 95vh;
+}
+
+
+.edit-main{
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+
+.edit-form{
+    margin: 100px 0;
+    border: 2px solid #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #6600cc, #cc33ff);
+    color:#ffffff;
+    width: 800px;
+}
+
+.edit-form label{
+    font-weight: 700;
+    font-size: 15px;
+}
+
+
+.edit-form input{ 
+    height: 35px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 20px;
+}
+
+.edit-form select{ 
+    height: 35px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 20px;
+}
+
+
+.delete-form{
+    border: 2px solid #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #6600cc, #cc33ff);
+    color:#ffffff;
+    width: 500px;
+    height: 300px;
+    margin-top: 20px;
+}
+
+.delete-text{
+    font-size: 18px;
+}
+
+
+.delete-btn {
+    padding: 6px 15px;
+    font-size: 17px;
+    border: none;
+    border-radius: 6px;
+    background-color: #dd3300;
+    color: #ffffff;
+    margin-left: 20px;
+}
+
+.delete-btn:hover{
+    background-color: #ff5522;
+}
+
+
+/* ######################################################### */
+/* Funds Appp */
+
+
+
+.funds-nav{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
+}
+
+.fund-buttons{
+    background-image: linear-gradient(to bottom right, #40128B, #9336B4, #40128B);
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+    padding: 5px 10px;
+    width: fit-content;
+}
+
+.fund-buttons:hover{
+    box-shadow: 5px 5px 15x #40128B;
+    background-image: linear-gradient(to bottom right, #9336B4, #9336B4, #9336B4);
+}
+
+
+.contribution-form{
+    border: 2px solid #ffffff;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #6600cc, #cc33ff);
+    color:#ffffff;
+    width: 500px;
+}
+
+.contribution-form h2{
+    margin-bottom: 20px;
+}
+
+.contribution-form p{
+    display: flex;
+    flex-direction: column;
+}
+
+.contribution-form label{
+    font-size: 17px;
+    font-weight: 550;
+}
+
+.contribution-form input{
+    width: 100%;
+    border: none;
+    height: 35px;
+    border-radius: 20px;
+}
+
+.contribution-form select{
+    width: 100%;
+    border: none;
+    height: 35px;
+    border-radius: 20px;
+}
+
+
+
+@media(max-width: 768px){
+    
+    .login_register{
+        width: 90%;
+    }
+
+    .login_register_content{
+        padding: 20px 0;
+    }
+
+    .div_container_image{
+        height: 93vh;
+    }
+    
+    .home_main{
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    .home_main_content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .home_main_image{
+        width: 90%;
+    }
+
+    .welcome-text{
+        font-size: 18px;
+    }
+
+
+    .main{
+        padding: 0px;
+    }
+
+    .create-main{
+        margin: 0px 0px;
+        padding: 0px;
+        flex-wrap: none;
+    }
+
+    .edit-main{
+        margin: 0px 0px;
+        padding: 0px 0px;
+        /* justify-content: none; */
+        height: 100%;
+    }
+    
+
+    .headline{
+        padding: 8px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .headline .create-button{
+        margin: 0px;
+    }
+    
+    .filter{
+        padding: 8px 10px 8px 0px;
+        width: fit-content;
+        background-color: #ffffff;
+        color: #000000;
+        border-radius: 10px;
+    }
+    
+    .filter form{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        /* margin-left: auto; */
+    }
+    
+    .filter-group{
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+    }
+    
+    .filter-group img{
+        width: 20px;
+    }
+    
+    .filter-group span{
+        display: flex;
+        font-size: 9px;
+        flex-direction: column;
+        align-items: left;
+        margin-left: 8px;
+    }
+
+    .create-button{
+        margin-left: 5px;
+        font-size: 20px;
+        padding: 4px 8px;
+    }
+
+    .update-td{
+        flex-direction: column;
+    }
+
+
+    .edit-form{
+        margin: 30px 0;
+        padding: 10px;
+        width: 90%;
+    }
+
+    .delete-form{
+        justify-content: center;
+        padding: 10px;
+        width: 80%;
+        
+    }
+
+    .funds-nav{
+        flex-wrap: wrap;
+    }
+    
+    .fund-buttons{
+        font-size: 16px;
+        border-radius: 20px;
+        padding: 4px 8px;
+        margin-bottom: 10px;
+    }
+
+    .contribution-form{
+        width: 80%;
+    }
+
+    
+}
+
+
+@media(max-width: 500px){
+    .main{
+        padding: 0px;
+    }
+
+    .options-icon{
+        width: 18px;
+    }
+
+    th{
+        font-size: 11px;
+    }
+
+    td{
+        font-size: 11px;
+    }
+
+    .total_data p{
+        padding: 10px;
+        font-size: 16px;
+    }
+}
+
+
+
+

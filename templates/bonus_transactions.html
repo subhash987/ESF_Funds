@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="main">
+    
+    <div class="header">
+        <h1 class="head-text">Bonus Transaction History</h1>
+    </div>
+
+    <ul>
+        {% for transaction in transactions %}
+            <li>
+                <strong>Contributor: {{ transaction.contributor.user.username }}</strong><br>
+                Bonus Amount: &#8377; {{ transaction.bonus_amount }}<br>
+                Transaction Date: {{ transaction.transaction_date }}
+            </li>
+        {% empty %}
+            <li>
+                No bonus transactions found.
+            </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% endblock content %}

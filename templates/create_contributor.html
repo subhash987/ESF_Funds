@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div class="create-main">
+  
+  <form class="contribution-form" method="POST" action="">
+    <h2>Make Contribution</h2>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="CREATE">
+  </form>
+
+</div>
+
+
+{% endblock %}

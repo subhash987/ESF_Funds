@@ -1,0 +1,7 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <h2>Repayment Already Paid</h2>
+  <p>The selected repayment has already been marked as paid.</p>
+  <a href="{% url 'loan-details' loan.id %}">Back to Loan Details</a>
+{% endblock %}

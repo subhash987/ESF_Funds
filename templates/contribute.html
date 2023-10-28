@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<!-- make_contribution.html -->
+<h2>Make Contribution</h2>
+<a href="{% url 'fund:create_contributor' %}">
+  <button>Add Contributor</button>
+</a>
+
+<form method="POST" action="{% url 'fund:submit_contribution' contributor.id %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Submit</button>
+</form>
+
+{% endblock content %}
+

@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="create-main">
+    <form class="edit-form" method="POST" action="">
+        <h1>You are Creating Loan: </h1>
+        {% csrf_token %}
+        {{form}}
+        <input type="SUBMIT" value="Submit">
+    </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+{% block content %}
+
+
+<div class="edit-main">
+    <form class="edit-form" method="POST" action="">
+        <h1>You are editing Transaction for: {{ transaction.user_id }}</h1>
+        {% csrf_token %}
+        <label for="loan">Loan:</label>
+        <input type="text" name="loan" id="loan" value="{{ loan_user }}" readonly>
+        {{ form.as_p }}
+        <input type="SUBMIT" value="Submit">
+    </form>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="main">
+    
+    <div class="header">
+        <h1 class="head-text">Give Bonuses</h1>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Give Bonuses</button>
+    </form>
+
+</div>
+
+{% endblock content %}
